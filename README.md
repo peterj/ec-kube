@@ -1,6 +1,7 @@
 # ec-kube
 
 ## What are we building?
+
 1. Create the Kubernetes controller (I'll use the kubebuilder)
 
 ```yaml
@@ -14,10 +15,7 @@ spec:
     }
 ```
 
-
-
 2. Embedchain API Docker image
-
 
 ## Running the image in Kubernetes
 
@@ -34,6 +32,8 @@ kubectl create secret generic ec-secret --from-literal='OPENAI_API_KEY=${OPENAI_
 ```
 
 ## Kubernetes controller
-kubebuilder init --domain learncloudnative.com --repo learncloudnative.com/aiapps
 
+```shell
+kubebuilder init --domain learncloudnative.com --repo learncloudnative.com/aiapps
 kubebuilder create api --group aiapps --version v1 --kind EmbedchainApp
+```

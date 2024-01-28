@@ -1,0 +1,27 @@
+# permissions for end users to view embedchainapps.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: embedchainapp-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: controller
+    app.kubernetes.io/part-of: controller
+    app.kubernetes.io/managed-by: kustomize
+  name: embedchainapp-viewer-role
+rules:
+- apiGroups:
+  - aiapps.learncloudnative.com
+  resources:
+  - embedchainapps
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - aiapps.learncloudnative.com
+  resources:
+  - embedchainapps/status
+  verbs:
+  - get

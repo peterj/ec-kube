@@ -1,0 +1,4 @@
+## Append samples of your project ##
+resources:
+- aiapps_v1_embedchainapp.yaml
+#+kubebuilder:scaffold:manifestskustomizesamples
