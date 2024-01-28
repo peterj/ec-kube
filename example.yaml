@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: EmbedchainApp
+metadata:
+  name: myapp
+spec:
+  spec:
+    type: ChatAPI
+    sources:
+      - name: some-pdf
+        uri: https://exmaplke.com/blah.pdf
+      - name: ano0ther-pdf
+        uri: somethingelse.pdf
+      - name: video
+        youtTubeVideo: https://youtbue.com/jknjkjknjnk
+    configRef:
+      name: ec-config
+    secretRef:
+      name: ec-secret
+    appName: my-ec-api
+
+- Watch for EmbedchainApp CRDs
+  - Validate the resource is correct (e.g. ensure the configmap & secret refs exist)
+  - Create a Deployment specification that mounts the ConfigMap referenced in `configRef`, 
+    and mounts the Secret referenced in secretRef as envirnoment variables
+  - Create a Service
+  - "Deploy" both
+  
+  - once deployed you can manage the lifecycle through the same resource.
+

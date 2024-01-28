@@ -1,0 +1,8 @@
+# app:
+#   config:
+#     id: my-ai-api
+#     collect_metrics: false
+llm:
+  provider: openai
+  config:
+    model: gpt-3.5-turbo-1106
