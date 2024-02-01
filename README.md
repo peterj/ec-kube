@@ -1,5 +1,11 @@
 # ec-kube
 
+As part of my weekend AI streams, I am building a Kubernetes controller that will manage Embedchain AI apps.
+
+Streams:
+- Part 1: [Watch here](https://www.youtube.com/watch?v=X-irXixeo1Y)
+- Part 2: [Join here](https://www.youtube.com/watch?v=q2sG9cRJh-w)
+
 ## What are we building?
 
 1. Create the Kubernetes controller (I'll use the kubebuilder)
