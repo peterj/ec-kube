@@ -28,8 +28,26 @@ type EmbedchainAppSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
 
-	// Foo is an example field of EmbedchainApp. Edit embedchainapp_types.go to remove/update
-	Foo string `json:"foo,omitempty"`
+	// ConfigRef is a reference to a ConfigMap that contains the configuration
+	//+kubebuilder:validation:Required
+	ConfigRef *ConfigRefSpec `json:"configRef,omitempty"`
+
+	// SecretRef is a reference to a Secret that contains the configuration
+	//+kubebuilder:validation:Required
+	SecretRef *SecretRefSpec `json:"secretRef,omitempty"`
+}
+
+// +kubebuilder:printcolumn:name="ConfigMap",type="string",JSONPath=".spec.configRef.name"
+type ConfigRefSpec struct {
+	// ConfigMapName is the name of the ConfigMap that contains the configuration
+	Name      string `json:"name"`
+	Namespace string `json:"namespace"`
+}
+
+// +kubebuilder:printcolumn:name="Secret",type="string",JSONPath=".spec.secretRef.name"
+type SecretRefSpec struct {
+	Name      string `json:"name"`
+	Namespace string `json:"namespace"`
 }
 
 // EmbedchainAppStatus defines the observed state of EmbedchainApp

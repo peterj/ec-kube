@@ -1,0 +1,11 @@
+apiVersion: aiapps.learncloudnative.com/v1
+kind: EmbedchainApp
+metadata:
+  name: myapp
+spec:
+  configRef:
+    name: ec-config
+    namespace: default
+  secretRef:
+    name: ec-secret
+    namespace: default

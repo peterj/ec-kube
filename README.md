@@ -3,6 +3,7 @@
 As part of my weekend AI streams, I am building a Kubernetes controller that will manage Embedchain AI apps.
 
 Streams:
+
 - Part 1: [Watch here](https://www.youtube.com/watch?v=X-irXixeo1Y)
 - Part 2: [Join here](https://www.youtube.com/watch?v=q2sG9cRJh-w)
 
@@ -42,4 +43,31 @@ kubectl create secret generic ec-secret --from-literal='OPENAI_API_KEY=${OPENAI_
 ```shell
 kubebuilder init --domain learncloudnative.com --repo learncloudnative.com/aiapps
 kubebuilder create api --group aiapps --version v1 --kind EmbedchainApp
+
+# Create webhook
+kubebuilder create webhook --group aiapps --version v1 --kind EmbedchainApp --defaulting --programmatic-validation
+```
+
+To run it locally, make sure you have a K8s cluster running and run:
+
+```shell
+ENABLE_WEBHOOKS=false make run
+```
+
+> Setting `ENABLE_WEBHOOKS` to `false`, because the webhook requires a valid certificate.
+
+Try deploying a basic resource:
+
+```yaml
+apiVersion: aiapps.learncloudnative.com/v1
+kind: EmbedchainApp
+metadata:
+  name: myapp
+spec:
+  configRef:
+    name: ec-config
+    namespace: default
+  secretRef:
+    name: ec-secret
+    namespace: default
 ```
